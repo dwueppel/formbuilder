@@ -166,7 +166,7 @@ sub parse {
                 $ptr->{$term} = (ref $ptr->{$term})
                                     ? [ @{$ptr->{$term}}, @val ] : @val > 1 ? \@val : $val[0];
             } else {
-                $ptr->{$term} = @val > 1 ? \@val : $val[0];
+					 $ptr->{$term} = @val > 1 ? \@val : ref($val[0]) eq 'ARRAY' ? \@val : $val[0];
             }
             $inval = 1;
         } else {
